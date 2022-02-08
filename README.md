@@ -19,3 +19,13 @@ K8S supports following container runtimes:
 - Docker
 - CRI-O
 - containerd
+
+## POD
+
+Pod is the smallest unit in the K8S world. Containers (one or many) are created inside of the pod.
+
+![Pod Anatomy](./imgs/podAnatomy.png)
+
+- We can have multiple containers running inside one pod but the most common scenario is to have `a single container per pod`.
+- namespace is meant to be a pod.
+- Each pod must be located on the same server (onde pod, one server)
