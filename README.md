@@ -30,7 +30,7 @@ Pod is the smallest unit in the K8S world. Containers (one or many) are created 
 - namespace is meant to be a pod.
 - Each pod must be located on the same server (onde pod, one server)
 
-## K8S Cluster
+## K8S Cluster & Nodes
 
 K8S cluster consists of nodes. Node is actually server either bare metals or virtual server. You can include multiple server to the K8S cluster. Most of the time the nodes which belongs to the same cluster are located close to each other in order to perform jobs more efficiently. Inside of the node there are pods. Pod is the smallest unit in the K8S. Each pod contain usually one container.
 
@@ -42,4 +42,25 @@ How nodes comunicate to each other and how they manage?
 
 There is a Master node in K8S cluster and other nodes in the cluster are worker nodes. Master node manages the worker nodes.It is a master node job to destribute eg. load across other worker nodes. Application is deplued to worker nodes only. Master node runs only system pods which are responsible for actuall work on the K8S cluster in general
 
-![Cluster Schema](./imgs/masterNodeCluster.png)
+![Master Node Cluster Schema](./imgs/masterNodeCluster.png)
+
+## K8S Services
+
+There are several services such as:
+
+- kubelet
+- kube-proxy
+- Container Runtime (Docker, CRI-O or containerd)
+
+Those services are present on each node in the k8s cluster.
+
+- The kubelet service on each node communicates with an API service located in Master Node. API Service is a main point of communication in between nodes in the k8s world.
+- Kube Proxy is responsible for network communication inside of each node and between nodes.
+- Scheduler service is responsible for planning and distributing of the load between different nodes in the cluster.
+- Kube Controller Manager is a single point which controls everything in K8S cluster.
+- Cloud Controller Manager is for interaction with cloud service provider where you run your k8s cluster.
+  - Loud Balancer is for opening your nodes to the world
+- etcd service stores all logs related to operation of entire k8s cluster. Logs are stored as key-value pairs.
+- Others service eg DNS. DNS provides connection to specific deployment by the name of the corresponding deployment service.
+
+![Kubernetes services](./imgs/k8sServices.png)
