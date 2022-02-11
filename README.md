@@ -64,3 +64,9 @@ Those services are present on each node in the k8s cluster.
 - Others service eg DNS. DNS provides connection to specific deployment by the name of the corresponding deployment service.
 
 ![Kubernetes services](./imgs/k8sServices.png)
+
+## What is kubectl
+
+`kubectl` is a command line tool which allows you to connect to specific K8S cluster and manage it remotly. You can also manage remote k8s clusters.
+
+![kubectl schema](./imgs/kubectlSchema.png);
