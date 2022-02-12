@@ -70,3 +70,9 @@ Those services are present on each node in the k8s cluster.
 `kubectl` is a command line tool which allows you to connect to specific K8S cluster and manage it remotly. You can also manage remote k8s clusters.
 
 ![kubectl schema](./imgs/kubectlSchema.png);
+
+## Software Required
+
+- Minikube creates k8s cluster with single node and master node
+  - We need Virtual box or Docker
+- kubectl to connect and manage the cluster through master node
