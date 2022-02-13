@@ -76,3 +76,20 @@ Those services are present on each node in the k8s cluster.
 - Minikube creates k8s cluster with single node and master node
   - We need Virtual box or Docker
 - kubectl to connect and manage the cluster through master node
+
+## Exploring the K8S Node
+
+`minikube start --driver=docker` to run a minikube localy using docker engine (we might aslo use VirtualBox etc.). To remind, each node represents a virtual or bare server.
+
+Each node in K8S cluster is just server either virtual or physical. To connect to node/server we use SSH protocol.
+
+<b>Note:</b>
+
+SSH stands for Secure Shell Protocol is a cryptographic network protocol for operating network services securely over an unsecured network. Its most notable applications are remote login and command-line execution. SSH applications are based on a client–server architecture, connecting an SSH client instance with an SSH server.
+
+- `minikube ip` is to to find the IP address which was assigned to the node
+- `ssh docker@<IP_ADDRESS>` this works only if you use a driver other than docker
+- `kubectl cluster-info` to see if k8s control pane and CoreDNS are running. We can also run the same command with `minikube kibectl clister-info`
+- `kubectl get nodes` to see a list of current nodes which are available in the k8s cluster.
+  `kubectl get pods` to see a list of pods in the cluster
+  `kubectl get namespaces` to see a list of the namespaces avaliable in the cluster.
