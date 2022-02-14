@@ -91,5 +91,12 @@ SSH stands for Secure Shell Protocol is a cryptographic network protocol for ope
 - `ssh docker@<IP_ADDRESS>` this works only if you use a driver other than docker
 - `kubectl cluster-info` to see if k8s control pane and CoreDNS are running. We can also run the same command with `minikube kibectl clister-info`
 - `kubectl get nodes` to see a list of current nodes which are available in the k8s cluster.
-  `kubectl get pods` to see a list of pods in the cluster
-  `kubectl get namespaces` to see a list of the namespaces avaliable in the cluster.
+- `kubectl get pods` to see a list of pods in the cluster
+- `kubectl get namespaces` to see a list of the namespaces avaliable in the cluster
+
+## Creating a Single Pod
+
+- `kubectl run nginx --image=nginx` to create a pod named nginx based on docker image nginx
+- `kubectl describe pod nginx` to see details of the pod named nginex
+- `kubectl get pods -o wide` to see more details like ip address of the pod about pod than using just `kubectl get pod`
+- `kubectl delete pod nginx` to deleted existing pod named nginx
