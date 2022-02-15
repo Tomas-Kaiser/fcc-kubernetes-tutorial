@@ -94,9 +94,13 @@ SSH stands for Secure Shell Protocol is a cryptographic network protocol for ope
 - `kubectl get pods` to see a list of pods in the cluster
 - `kubectl get namespaces` to see a list of the namespaces avaliable in the cluster
 
-## Creating a Single Pod
+## Create a Single Pod
 
 - `kubectl run nginx --image=nginx` to create a pod named nginx based on docker image nginx
 - `kubectl describe pod nginx` to see details of the pod named nginex
 - `kubectl get pods -o wide` to see more details like ip address of the pod about pod than using just `kubectl get pod`
 - `kubectl delete pod nginx` to deleted existing pod named nginx
+
+## Create Alias for the kubectl Command
+
+`alias k=kubectl` to create a alias called k which represents the kubectl command. This lives only the current terminal session.
