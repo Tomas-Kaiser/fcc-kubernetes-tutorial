@@ -104,3 +104,14 @@ SSH stands for Secure Shell Protocol is a cryptographic network protocol for ope
 ## Create Alias for the kubectl Command
 
 `alias k=kubectl` to create a alias called k which represents the kubectl command. This lives only the current terminal session.
+
+## Create & Explore Deployment
+
+We use deployments to create a multiple pods when we can increase, decrease quantity of the pods or modify configuration etc. Deployment is responsible for creating those pods. Created pods will be absolutely the same and can be distributed across different nodes.
+
+- `kubectl create deployment nginx-deployment --image=nginx` to create a deployment named nginx-deployment using docker image nginx
+- `kubectl get deployments` to see all deployments
+
+When we create a deployment, a pod is created automatically with the name of the deployment following a hascode - and specific hashcode for the pod eg.: nginx-deployment-794f656f8b-rmbsq
+
+- `kubectl describe deployment nginx-deployment` to see details of the deployment of nginx-deployment
