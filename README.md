@@ -115,3 +115,15 @@ We use deployments to create a multiple pods when we can increase, decrease quan
 When we create a deployment, a pod is created automatically with the name of the deployment following a hascode - and specific hashcode for the pod eg.: nginx-deployment-794f656f8b-rmbsq
 
 - `kubectl describe deployment nginx-deployment` to see details of the deployment of nginx-deployment
+  - Selector binds the deployment with the pods
+  - Replicas show the information about pods such as quantity of the pods
+  - ReplicaSet manages all pods related to the deployment
+- `kubectl scale deployment nginx-deployment --replicas=5` to scale deployment to 5 pods
+
+## Connect to one of the Pods Using its IP Address
+
+- `kubectl get pods -o wide` to see pods with IP address
+
+First we need to connect to the existing node.
+
+- `curl <IP_ADDRESS_OF_THE_POD>`
