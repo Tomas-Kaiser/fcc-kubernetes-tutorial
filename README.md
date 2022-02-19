@@ -127,3 +127,12 @@ When we create a deployment, a pod is created automatically with the name of the
 First we need to connect to the existing node.
 
 - `curl <IP_ADDRESS_OF_THE_POD>`
+
+## What is Service
+
+If you want to connect to specific deployments using a specific IP address. There are several options:
+
+- Create so-called Cluster IP
+  - Such IP address will be created and assigned to specific deployment. You will be able to connect to this specific deployment only inside of k8s cluster using this virtiual IP address. Such single IP address is for entire deployment.
+- Create external IP address (open the demployment to outside world)
+  - It is possible to expose specific deployment to the IP address of the node or use a load balancer. So the most common solution is to use load balancer IP address.
