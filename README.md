@@ -136,3 +136,21 @@ If you want to connect to specific deployments using a specific IP address. Ther
   - Such IP address will be created and assigned to specific deployment. You will be able to connect to this specific deployment only inside of k8s cluster using this virtiual IP address. Such single IP address is for entire deployment.
 - Create external IP address (open the demployment to outside world)
   - It is possible to expose specific deployment to the IP address of the node or use a load balancer. So the most common solution is to use load balancer IP address.
+
+## Create ClusterIP service
+
+We need to expose the specific deploument on port 8080 with following command:
+
+`k expose deployment nginx-deployment --port=8080 --target-port=80`
+
+Note: the nginx container has default port 80 therefore we set 80 for --target-port=80
+
+Now when we run `k get services` or with shrot cut svc we can see two services:
+
+```
+NAME               TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+kubernetes         ClusterIP   10.96.0.1        <none>        443/TCP    291d
+nginx-deployment   ClusterIP   10.107.233.194   <none>        8080/TCP   2m24s
+```
+
+This virtual IP address 10.107.233.194 is to be used to connect to any of the pods inside of this network. We can connect to this nginx-deployment inside of the k8s custler.
