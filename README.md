@@ -89,6 +89,7 @@ SSH stands for Secure Shell Protocol is a cryptographic network protocol for ope
 
 - `minikube ip` is to to find the IP address which was assigned to the node
 - `ssh docker@<IP_ADDRESS>` this works only if you use a driver other than docker
+  - In case you have used docker driver, then you have to connect into minikube container.
 - `kubectl cluster-info` to see if k8s control pane and CoreDNS are running. We can also run the same command with `minikube kibectl clister-info`
 - `kubectl get nodes` to see a list of current nodes which are available in the k8s cluster.
 - `kubectl get pods` to see a list of pods in the cluster
@@ -154,3 +155,8 @@ nginx-deployment   ClusterIP   10.107.233.194   <none>        8080/TCP   2m24s
 ```
 
 This virtual IP address 10.107.233.194 is to be used to connect to any of the pods inside of this network. We can connect to this nginx-deployment inside of the k8s custler.
+
+Connect to the k8s node and run `curl 10.107.233.194:8080` and you should get an answer from one of the running nodes inside of the deployment.
+
+- `k delete deployment nginx-deployment` to delete existing deployment
+- `k delete service nginx-deployment` to delete existing deployment
