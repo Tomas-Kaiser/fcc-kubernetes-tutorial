@@ -138,7 +138,7 @@ If you want to connect to specific deployments using a specific IP address. Ther
 - Create external IP address (open the demployment to outside world)
   - It is possible to expose specific deployment to the IP address of the node or use a load balancer. So the most common solution is to use load balancer IP address.
 
-## Create ClusterIP service
+### Create ClusterIP service
 
 We need to expose the specific deploument on port 8080 with following command:
 
@@ -161,7 +161,9 @@ Connect to the k8s node and run `curl 10.107.233.194:8080` and you should get an
 - `k delete deployment nginx-deployment` to delete existing deployment
 - `k delete service nginx-deployment` to delete existing deployment
 
-To create the NodePort service type we need to supply the `--type` ase follow
+### Create NodePort service
+
+To create the NodePort service type we need to supply the `--type` as follow
 
 - `k expose deployment k8s-web-hello --type=NodePort --port=3000`
 
@@ -172,3 +174,19 @@ kubernetes         ClusterIP   10.96.0.1        <none>        443/TCP          2
 ```
 
 To open it in web broweser we need to take the `minikube ip` and suffix with port :31815 or open running pod in the browser automatically we can run `minikube service k8s-web-hello`
+
+### Create LoadBalancer service
+
+To create LoadBalancer service we run command as follow:
+
+- `k expose deployment k8s-web-hello --type=LoadBalancer --port=3000`
+
+```
+NAME                  TYPE        CLUSTER-IP       EXTERNAL-IP      PORT(S)           AGE
+k8s-web-hello      LoadBalancer   10.104.81.133     <pending>      3000:30703/TCP     4s
+kubernetes         ClusterIP      10.96.0.1          <none>        443/TCP            291d
+```
+
+Note that external-ip is pending. This is case just for minikube otherwise if you use a cloud provider the ip address will be assigned automatically.
+
+And then we can run `minikube service k8s-web-hello`
