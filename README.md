@@ -160,3 +160,15 @@ Connect to the k8s node and run `curl 10.107.233.194:8080` and you should get an
 
 - `k delete deployment nginx-deployment` to delete existing deployment
 - `k delete service nginx-deployment` to delete existing deployment
+
+To create the NodePort service type we need to supply the `--type` ase follow
+
+- `k expose deployment k8s-web-hello --type=NodePort --port=3000`
+
+```
+NAME               TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)           AGE
+k8s-web-hello      NodePort    10.101.86.153    <none>        3000:31815/TCP   6m39s
+kubernetes         ClusterIP   10.96.0.1        <none>        443/TCP          291d
+```
+
+To open it in web broweser we need to take the `minikube ip` and suffix with port :31815 or open running pod in the browser automatically we can run `minikube service k8s-web-hello`
